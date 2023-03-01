@@ -11,22 +11,14 @@
         zoomControl: true,
         gestureHandling: 'cooperative',
       }"
+      style="height: 100%;"
     >
-      <GMapMarker
+    <GMapMarker
         v-for="data in restaurant_list_props"
-        :position="{ lat: data.geometry.location.lat, lng: data.geometry.location.lng }"
-
+        :key="data.id"
+        :position="data.geometry.location"
+        :name="data.name"
       >
-        <GMapInfoWindow :options="{ maxWidth: 200 }">
-          <b>{{ data.name }}</b>
-          <br />
-          <br />
-          <code>
-            Lat: {{ data.geometry.location.lat }},
-            <br />
-            Lng: {{ data.geometry.location.lng }}
-          </code>
-        </GMapInfoWindow>
       </GMapMarker>
     </GMap>
   </div>
@@ -38,7 +30,7 @@
   export default {
     props: {
       restaurant_list_props: {
-        type: Object,
+        type: Array,
         default: () => [],
       },
     },
@@ -1034,7 +1026,7 @@
             ],
             "vicinity": "1251/3 ถนน กรุงเทพ - นนทบุรี, Khwaeng Wong Sawang, Khet Bang Sue"
         }
-    ],
+        ],
         pins: {
           selected:
             "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHUSURBVHgB5VU7SwNBEJ7LmZBgMC+UdKKx0MZCG2srwcbCB2glpFDQ3to/IegvSAIWPrBJIySlipUKKqYLaHJ3iWIelzu/DTk8j71H7MQPltmZnflmZ3b3juivQ3BzCIfDI4FAYBvTRV3XR7tBglCCOIP9oFwuv/46QSwWWwfZIaaDNi7vGOlqtZqhfhPE4/EViAy5V6ljE8uVSuXYc4JkMjncarUeMR0ib5Db7fZEvV6vWBd8PG+Q73LIFYyj3lAsa1G/37/D4+JWgPbcQkybd9jpdGYVRXlmSiQSSYmieMWmhgMuwI0kSTPkpQJgzKJnDfJuKYryBJH7sVNBSPGI7BKoFl3n+GguMY4JHiz6GtoybiisRczmEtPFAM+Ifl6i5DmTKYqeX+Nssj19lUz9N2J4XNxDTiQSkwi4oz6ADU3hLdxb7dwW9RyL5B0FHrltAgZUsEce4eRrmwB3ugCRJ3fk4VvsOwEDHtcWxKeDy4emaWmHdRKdFpvNphQKhdhFmOet42D3sftTJw7X/wHgw/U8h1ywkJ/gYJeI/wi/g8kdmqqqG5Alk62Er+emG7nXBFSr1aroNSNknwOVzZnNS6xIHtFoNF6CweAbpheyLOfo3+ALfrSuzJ1F8EsAAAAASUVORK5CYII=",
@@ -1186,24 +1178,14 @@
         ],
       };
     },
-
     methods: {
-      returnToCenter() {
-        this.$refs.gMap.map.setCenter(this.results[0].geometry.location);
+      showInfoWindow: function (e, marker) {
+        this.infoWindow.lat = marker.lat;
+        this.infoWindow.lng = marker.lng;
+        this.infoWindow.title = marker.title;
+        this.infoWindow.content = marker.content;
+        this.infoWindow.opened = true;
       },
-
-      checkForMarkers() {
-        this.results.forEach((location, i) => {
-          location.visible = this.$refs.gMap.map
-            .getBounds()
-            .contains(this.$refs.gMap.markers[i].getPosition());
-        });
-
-        // this.results.geometryVisibleOnMap = this.results.geometry
-        //   .filter((l) => l.visible)
-        //   .map((l) => l.name)
-        //   .join(", ");
-      },
-    },
+    }
   };
 </script>
