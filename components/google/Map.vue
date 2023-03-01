@@ -13,7 +13,7 @@
       }"
       style="height: 100%;"
     >
-    <GMapMarker
+      <GMapMarker
         v-for="data in restaurant_list_props"
         :key="data.id"
         :position="data.geometry.location"
@@ -1179,13 +1179,6 @@
       };
     },
     methods: {
-      showInfoWindow: function (e, marker) {
-        this.infoWindow.lat = marker.lat;
-        this.infoWindow.lng = marker.lng;
-        this.infoWindow.title = marker.title;
-        this.infoWindow.content = marker.content;
-        this.infoWindow.opened = true;
-      },
     }
   };
 </script>
