@@ -15,20 +15,30 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Enter keyword" aria-label="Search">
-            <button class="btn btn-primary" type="submit">Search</button>
+          <form class="d-flex" @submit.prevent="GetRestaurant">
+            <input v-model="keyword" class="form-control me-2" type="search" placeholder="Enter keyword" aria-label="Search">
+            <button class="btn btn-primary" >Search</button>
           </form>
         </div>
       </div>
     </nav>
+    <Map :restaurant_list_props="restaurant_list" />
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue'
+  import restaurant from '../scripts/restaurant';
+  import Map from './google/Map.vue';
 
   export default Vue.extend({
+    mixins: [restaurant],
+    components: { Map },
     name: 'AppHeader',
+    data() {
+      return {
+        keyword: ''
+      };
+    },
   })
 </script>
