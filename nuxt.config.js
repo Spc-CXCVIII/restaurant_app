@@ -15,14 +15,22 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
-        { rel: 'icon',       type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'stylesheet',                       href: '/css/bootstrap.min.css' },
-        { rel: 'stylesheet',                       href: '/css/custom.css' },
-        { rel: 'stylesheet',                       href: 'https://fonts.googleapis.com/css?family=Nunito'}
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: '/css/bootstrap.min.css' },
+      { rel: 'stylesheet', href: '/css/custom.css' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Nunito',
+      },
     ],
     script: [
-      { type:'text/javascript', src: '/js/bootstrap.bundle.min.js' },
-    ]
+      { type: 'text/javascript', src: '/js/bootstrap.bundle.min.js' },
+      {
+        src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZ-vIO3LoD00FO2rj4I8gpLOdKLUsAbGs',
+        async: true,
+        defer: true,
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -44,10 +52,13 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    ['nuxt-gmaps', {
-      key: 'AIzaSyDZ-vIO3LoD00FO2rj4I8gpLOdKLUsAbGs',
-      //you can use libraries: ['places']
-    }]
+    [
+      'nuxt-gmaps',
+      {
+        key: 'AIzaSyDZ-vIO3LoD00FO2rj4I8gpLOdKLUsAbGs',
+        //you can use libraries: ['places']
+      },
+    ],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

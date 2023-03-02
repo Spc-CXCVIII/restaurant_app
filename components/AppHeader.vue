@@ -1,5 +1,6 @@
 <template>
   <div style="font-family: 'Nunito';">
+    <LoadingModal v-if="showLoadingModal"/>
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
       <div class="container-fluid">
         <div class="navbar-brand">
@@ -11,9 +12,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
           </ul>
           <form class="d-flex" @submit.prevent="GetRestaurant">
             <input v-model="keyword" class="form-control me-2" type="search" placeholder="Enter keyword" aria-label="Search">
@@ -22,22 +20,23 @@
         </div>
       </div>
     </nav>
-    <Map :restaurant_list_props="restaurant_list" />
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue'
   import restaurant from '../scripts/restaurant';
-  import Map from './google/Map.vue';
+  import LoadingModal from './LoadingModal.vue';
+  import ErrorModal from './ErrorModal.vue';
 
   export default Vue.extend({
     mixins: [restaurant],
-    components: { Map },
     name: 'AppHeader',
+    components: { LoadingModal, ErrorModal },
     data() {
       return {
-        keyword: ''
+        keyword: '',
+        loading: false
       };
     },
   })

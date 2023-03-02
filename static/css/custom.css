@@ -6,3 +6,15 @@
   height: 100%;
   overflow: hidden;
 }
+
+.container {
+  margin: 0 auto;
+  min-height: 90vh;
+  min-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
