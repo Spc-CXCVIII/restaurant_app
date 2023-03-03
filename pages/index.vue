@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100%;">
+  <div>
     <AppHeader @data-loaded="onDataLoaded"/>
     <Map :restaurant_list_props="restaurantData" />   
   </div>

@@ -18,3 +18,52 @@
   align-items: center;
   text-align: center;
 }
+
+.info-window {
+  font-family: Nunito;
+  font-size: 14px;
+}
+
+.info-window-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.info-window-title {
+  margin: 0;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+}
+
+.info-window-close {
+  border: none;
+  background-color: transparent;
+  color: #555;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.info-window-close:hover {
+  color: #222;
+}
+
+.info-window-body {
+  margin: 0;
+  padding: 0;
+}
+
+.info-window-address {
+  margin: 0;
+}
+
+.info-window-link {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.info-window-link:hover {
+  text-decoration: underline;
+}
