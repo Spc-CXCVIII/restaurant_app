@@ -14,5 +14,3 @@ yarn install
 ```
 yarn dev
 ```
-
-#### The API is <b>```/api/restaurant/search```</b>
