@@ -30,6 +30,9 @@ export default {
         async: true,
         defer: true,
       },
+      {
+        src: 'https://code.jquery.com/jquery-3.6.0.min.js',
+      },
     ],
   },
 
