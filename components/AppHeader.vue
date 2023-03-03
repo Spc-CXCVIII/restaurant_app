@@ -35,7 +35,7 @@
     components: { LoadingModal, ErrorModal },
     data() {
       return {
-        keyword: '',
+        keyword: 'Bang sue',
         loading: false
       };
     },
